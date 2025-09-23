@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ariba e-commerce website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Mulish", sans-serif;
+        }
+
+        .header {
+            position: relative;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            gap: 200px;
+        }
+
+        /* Toggle button (hamburger menu) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hidden checkbox for toggle functionality */
+        #menu-checkbox {
+            display: none;
+        }
+
+        .nav-links ul {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            list-style-type: none;
+        }
+
+        .nav-links ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links ul li a:hover {
+            color: #ff4d4d;
+        }
+
+        .icons i {
+            color: white;
+            margin: 0 5px;
+        }
+
+        .hero {
+            background: url(slide-1.jpg)no-repeat center/ cover;
+            color: white;
+            display: flex;
+            width: 100%;
+            height:800px;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .hero-section h1,
+        .hero-section p,
+        .hero-section .button {
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideIn 1s ease forwards;
+        }
+
+        .hero-section h1 {
+            animation-delay: 0.2s;
+        }
+
+        .hero-section p {
+            animation-delay: 0.6s;
+            font-size: 20px;
+            line-height: 35px;
+        }
+
+        .hero-section .button {
+            animation-delay: 1s;
+        }
+
+        .hero-section .button a:hover {
+            color: #F56061;
+            background: white;
+        }
+
+        .hero-section .button a {
+            background: #ff6f61;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            padding: 22px;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            gap: 30px;
+            padding-left: 98px;
+        }
+
+        .hero-section h1 {
+            font-family: "Mulish", sans-serif;
+            font-size:70px;
+        }
+
+        .button {
+            width: 30%;
+        }
+
+        .button a {
+            background-color: #F56061;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 15px;
+            color: #fff;
+            padding: 14px 38px
+        }
+
+        .button a:hover {
+            color: #fff;
+            background-color: none;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 82px;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .header h1 {
+            font-size: 37px;
+            color: #060530;
+            font-family: "Lora", serif;
+            margin-top: 0px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-top: 15px;
+            margin-bottom: 17px;
+        }
+
+        .underline-1 {
+            width: 107px;
+            height: 3px;
+            background-color: #e74c3c;
+            margin-top: 7px;
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image:hover {
+            transform: scale(1.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            transition: transform 0.3s ease;
+        }
+
+        .heart-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #bdc3c7;
+            cursor: pointer;
+            margin: 15px 15px 0 0;
+        }
+
+        .heart-icon:hover {
+            color: #e74c3c;
+        }
+
+        .heart-icon.active {
+            color: #e74c3c;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: rgba(202, 202, 207, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            transition: bottom 0.4s ease;
+            height: 100%;
+        }
+
+        .overlay .icons {
+            display: flex;
+            gap: 10px;
+            position: relative;
+            top: 180px;
+        }
+
+        .overlay .icons i {
+            background: #fff;
+            color: #1d1d1e;
+            border-radius: 50%;
+            padding: 17px 22px;
+
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+        }
+
+        .overlay .icons i:hover {
+            transform: scale(1.2);
+            background: #e91e63;
+            color: #fff;
+        }
+
+        .shop-btn {
+            background: #fff;
+            color: #0b0835;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            top: 200px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .shop-btn:hover {
+            background: #e91e63;
+            color: #fff;
+        }
+
+        .product-card:hover .overlay {
+            bottom: 83px;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #060530;
+        }
+
+        .price {
+            display: flex;
+            gap: 17px;
+        }
+
+        .new-price {
+            color: #e74c3c;
+            font-size: 18px;
+        }
+
+        .img1 { background-image: url('Card_1.jpg'); }
+        .img2 { background-image: url('Card_2.jpg'); }
+        .img3 { background-image: url('Card_3.jpg'); }
+        .img4 { background-image: url('Card_4.jpg'); }
+        .img5 { background-image: url('Card_5.jpg'); }
+        .img6 { background-image: url('Card_6.jpg'); }
+        .img7 { background-image: url('Card_7.jpg'); }
+        .img8 { background-image: url('Card_8.jpg'); }
+        .img9 { background-image: url('Card_9.jpg'); }
+        .img10 { background-image: url('Card_10.jpg'); }
+        .img11 { background-image: url('Card_11.jpg'); }
+        .img12 { background-image: url('Card_12.jpg'); }
+        .img13 { background-image: url('Card_13.jpg'); }
+        .img14 { background-image: url('Card_14.jpg'); }
+        .img15 { background-image: url('Card_15.jpg'); }
+        .img16 { background-image: url('Card_16.jpg'); }
+
+        .container-1 {
+            margin: 0 127px;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .container-1 .bg-text h1 {
+            font-weight: 700;
+            font-size: 150px;
+            line-height: 192px;
+            text-align: center;
+            color: rgb(243, 243, 243);
+            font-family: "Lora", serif;
+        }
+
+        .banner-wrap {
+            background: url(slide.2.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 62vh;
+        }
+
+        .text-content h2 {
+            font-family: "Lora", serif;
+            position: relative;
+            text-align: center;
+            font-weight: 700;
+            font-size: 67px;
+            line-height: 64px;
+            color: rgb(6, 5, 48);
+            padding: 0px 10px;
+            top: -75px;
+        }
+
+        .text-content p {
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 25px;
+            letter-spacing: 0.3em;
+            color: #9B9B9B;
+            position: relative;
+            top: -60px;
+        }
+
+        .banner-wrap .text-content a {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: underline;
+            line-height: 96px;
+            color: #F56061;
+            position: relative;
+            top: -70px;
+        }
+
+        .container-2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 27px;
+        }
+
+        .header-2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+            padding: 35px 0px;
+        }
+
+        .header-2 h1 {
+            font-size: 37px;
+            color: #060530;
+            font-family: "Lora", serif;
+            margin-top: 0px;
+        }
+
+        .header-2 p {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-top: 15px;
+            margin-bottom: 17px;
+        }
+
+        .underline-2 {
+            width: 107px;
+            height: 3px;
+            background-color: #e74c3c;
+            margin-top: 7px;
+            margin-bottom: 30px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .menu span {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .menu span:hover {
+            color: #ff4d4d;
+        }
+
+        .menu .active {
+            color: #ff4d4d;
+            font-weight: 500;
+        }
+
+        .container-3 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 27px;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .banner-box {
+            position: relative;
+            width: 43%;
+            overflow: hidden;
+        }
+
+        .banner-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .banner-box.left .banner-content {
+            color: white;
+        }
+
+        .banner-box.right .banner-content {
+            color: white;
+            text-align: left;
+            left: 30%;
+            transform: translate(-30%, -50%);
+        }
+
+        .banner-content h2 {
+            font-family: "Lora", serif;
+            font-size: 35px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            left: 152px;
+            top: 105px;
+        }
+
+        .banner-content p.small {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .banner-content p {
+            font-size: 18px;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            left: 150px;
+            top: 115px;
+        }
+
+        .btn {
+            padding: 15px 37px;
+            color: #F56061;
+            font-size: 22px;
+            background-color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: 0.3s;
+            position: relative;
+            left: 172px;
+            top: 152px;
+        }
+
+        .btn:hover {
+            background: #F56061;
+            color: white;
+        }
+
+        .banner-content2 {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            color: white;
+        }
+
+        .banner-content2 p {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 25px;
+            color: #fff;
+        }
+
+        .banner-content2 h2 {
+            font-weight: 700;
+            font-size: 35px;
+            line-height: 51px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn2 {
+            background: #F56061;
+            color: #fff;
+            text-transform: capitalize;
+            position: relative;
+            font-family: "Lora", serif;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+            padding: 14px 38px;
+            transition: all 0.3s ease-in-out;
+            top: 21px;
+            border-radius: 3px;
+        }
+
+        .btn2:hover {
+            color: #F56061;
+            background: white;
+        }
+
+        .container-4 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 27px;
+        }
+
+        .header-3 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+            
+        }
+
+        .header-3 h1 {
+            font-size: 37px;
+            color: #060530;
+            font-family: "Lora", serif;
+            margin-top: 0px;
+        }
+
+        .header-3 p {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-top: 15px;
+            margin-bottom: 17px;
+        }
+
+        .underline-3 {
+            width: 107px;
+            height: 3px;
+            background-color: #e74c3c;
+            margin-top: 7px;
+            margin-bottom: 30px;
+        }
+
+        .Blog {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 50px;
+        }
+
+        .Blog-tittle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+           
+        }
+
+        .Blog-tittle h1 {
+            font-size: 37px;
+            color: #060530;
+            font-family: "Lora", serif;
+            margin-top: 0px;
+        }
+
+        .Blog-tittle p {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-top: 15px;
+            margin-bottom: 17px;
+        }
+
+        .underline-4 {
+            width: 107px;
+            height: 3px;
+            background-color: #e74c3c;
+            margin-top: 7px;
+            margin-bottom: 30px;
+        }
+
+        .blog-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 33px;
+            flex-wrap: wrap;
+           
+        }
+
+        .blog-post {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .post-image {
+            display: flex;
+            position: relative;
+            height: 420px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .fashion-bg { background-image: url('Fashion.jpg'); }
+        .trending-bg { background-image: url('Trending.jpg'); }
+        .lifestyle-bg { background-image: url('Lifestyle.jpg'); }
+
+        .category-tag {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: #ff5757;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 35px;
+            border-radius: 5px;
+            min-width: 90px;
+        }
+
+        .post-content {
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            color: #666;
+            font-size: 17px;
+            height: 60px;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            left: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .red-dot::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #ff5757;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .post-title {
+            color: #060530;
+            font-size: 27px;
+            font-weight: 700;
+            line-height: 32px;
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            left: 12px;
+            margin-bottom: 15px;
+        }
+
+        .post-excerpt {
+            color: #7f8c8d;
+            font-size: 17px;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            left: 12px;
+            margin-bottom: 15px;
+        }
+
+        .read-more-link {
+            color: #ff5757;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            height: 35px;
+            position: relative;
+            left: 12px;
+            margin-bottom: 20px;
+        }
+
+        .read-more-link:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+
+        .content-body {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 20px 0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .text-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-section {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .footer {
+            background: #f3f3f3;
+            padding: 50px 80px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            min-width: 250px;
+            flex: 1;
+        }
+
+        .box:first-child {
+            flex: 1.5;
+        }
+
+        .box:nth-child(3) {
+            flex: 1.5;
+        }
+
+        .box:last-child {
+            flex: 1.5;
+        }
+
+        .box h2.logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0a0a23;
+        }
+
+        .box p {
+            color: #555;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .box h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #0a0a23;
+            font-family: "Lora", serif;
+        }
+
+        .box ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        .box ul li {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .icon i {
+            color: black;
+        }
+
+        .icon a {
+            display: inline-block;
+            margin-right: 12px;
+            background: #fff;
+            color: #0a0a23;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .icon a:hover {
+            background: #ff5c5c;
+            color: #fff;
+        }
+
+        .post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .post img {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .post p {
+            color: #333;
+            font-size: 15px;
+        }
+
+        .post span {
+            font-size: 13px;
+            color: #999;
+        }
+
+        form {
+            margin-top: 15px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        form button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 14px;
+            border: none;
+            background: #f45b5b;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        form button:hover {
+            background: #e04a4a;
+        }
+
+        /* RESPONSIVE DESIGN */
+        
+        /* Tablet Styles */
+        @media screen and (max-width: 1024px) {
+            .navbar {
+                gap: 50px;
+                padding: 0 20px;
+            }
+
+            .hero-section {
+                width: 70%;
+                padding-left: 50px;
+            }
+
+            .hero-section h1 {
+                font-size: 50px;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .container-1 {
+                margin: 0 50px;
+            }
+
+            .text-content h2 {
+                font-size: 45px;
+            }
+
+            .container-1 .bg-text h1 {
+                font-size: 100px;
+                line-height: 120px;
+            }
+
+            .banner-content h2 {
+                font-size: 28px;
+                left: 100px;
+            }
+
+            .banner-content p {
+                left: 100px;
+            }
+
+            .btn {
+                left: 120px;
+                font-size: 18px;
+            }
+
+            .blog-post {
+                width: 350px;
+            }
+
+            .footer {
+                padding: 40px 40px;
+            }
+
+            .row {
+                gap: 30px;
+            }
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            /* Mobile Navigation */
+            .navbar {
+                gap: 20px;
+                padding: 0 15px;
+                justify-content: space-between;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(0, 0, 0, 0.95);
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                gap: 40px;
+            }
+
+            .nav-links ul li a {
+                font-size: 24px;
+                color: white;
+            }
+
+            /* Show menu when checkbox is checked */
+            #menu-checkbox:checked ~ .nav-links {
+                left: 0;
+            }
+
+            /* Animate hamburger when checked */
+            #menu-checkbox:checked + .menu-toggle span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            #menu-checkbox:checked + .menu-toggle span:nth-child(2) {
+                opacity: 0;
+            }
+
+            #menu-checkbox:checked + .menu-toggle span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 500px;
+            }
+
+            .hero-section {
+                width: 90%;
+                padding-left: 20px;
+                gap: 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            .hero-section p {
+                font-size: 16px;
+                line-height: 24px;
+            }
+            .hero-section button a{
+                font-size: 15px;
+            }
+            .button {
+                width: 60%;
+            }
+
+            /* Containers */
+            .container {
+                padding: 30px 15px;
+            }
+
+            .header h1, .header-2 h1, .header-3 h1, .Blog-tittle h1 {
+                font-size: 28px;
+            }
+
+            .header p, .header-2 p, .header-3 p, .Blog-tittle p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+
+            /* Product Cards */
+            .products {
+                gap: 15px;
+            }
+
+            .product-card {
+                width: 280px;
+                height: 350px;
+            }
+
+            .product-image {
+                height: 250px;
+            }
+
+            .overlay .icons {
+                top: 140px;
+            }
+
+            .shop-btn {
+                top: 160px;
+            }
+
+            .product-card:hover .overlay {
+                bottom: 73px;
+            }
+
+            /* Fashion Banner */
+            .container-1 {
+                margin: 0 15px;
+            }
+
+            .banner-wrap {
+                height: 40vh;
+            }
+
+            .container-1 .bg-text h1 {
+                font-size: 60px;
+                line-height: 70px;
+            }
+
+            .text-content h2 {
+                font-size: 28px;
+                line-height: 32px;
+                top: -40px;
+            }
+
+            .text-content p {
+                font-size: 16px;
+                top: -30px;
+            }
+
+            .banner-wrap .text-content a {
+                font-size: 16px;
+                top: -35px;
+            }
+
+            /* Menu */
+            .menu {
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .menu span {
+                font-size: 16px;
+            }
+
+            .hero-section .button a{
+                padding: 16px;
+            }
+
+
+            /* Banner Section */
+            .banner {
+                flex-direction: column;
+                padding: 20px 15px;
+                gap: 15px;
+            }
+
+            .banner-box {
+                width: 100%;
+            }
+
+            .banner-content h2 {
+                font-size: 24px;
+                left: 50px;
+                top: 50px;
+            }
+
+            .banner-content p {
+                left: 50px;
+                top: 60px;
+            }
+
+            .btn {
+                left: 70px;
+                top: 80px;
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+
+            .banner-content2 h2 {
+                font-size: 28px;
+            }
+
+            .banner-content2 p {
+                font-size: 18px;
+            }
+
+            .btn2 {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+
+            /* Blog Section */
+            .blog-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .blog-post {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .post-image {
+                height: 300px;
+            }
+
+            .post-title {
+                font-size: 22px;
+            }
+
+            .post-excerpt {
+                font-size: 15px;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 30px 15px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .box h3 {
+                font-size: 24px;
+            }
+
+            .post {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Small Mobile Styles */
+        @media screen and (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 28px;
+                line-height: 35px;
+            }
+
+            .product-card {
+                width: 250px;
+                height: 320px;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            .overlay .icons {
+                top: 120px;
+            }
+
+            .shop-btn {
+                top: 140px;
+            }
+
+            .product-card:hover .overlay {
+                bottom: 63px;
+            }
+
+            .container-1 .bg-text h1 {
+                font-size: 40px;
+                line-height: 50px;
+            }
+
+            .text-content h2 {
+                font-size: 22px;
+                line-height: 28px;
+            }
+
+            .banner-content h2 {
+                font-size: 20px;
+                left: 20px;
+            }
+
+            .banner-content p {
+                left: 20px;
+            }
+
+            .btn {
+                left: 30px;
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+            .icons{
+                display: none;
+            }
+
+            .hero-section .button a{
+                padding: 12px;
+            }
+
+            .post-title {
+                font-size: 20px;
+            }
+
+            .blog-post {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="bg_removed_image.png" alt="logo">
+            </div>
+            
+            <!-- Hidden checkbox for toggle functionality -->
+            <input type="checkbox" id="menu-checkbox">
+            
+            <!-- Toggle button (hamburger menu) -->
+            <label for="menu-checkbox" class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">SHOP</a></li>
+                    <li><a href="#">PAGES</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </div>
+            <div class="icons">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-section">
+            <h1>Lets Shop & Get the Best Discounts</h1>
+            <p>Atnon ullamcorper amet nulla tortor sed quis quam. Sitortor tristique ante vel
+                viverra.
+                Sed pretium suscipit nec estquam.</p>
+
+            <div class="button">
+                <a href="#" class="button"> Start Shopping</a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="header">
+                <h1>New Arrival</h1>
+                <p>Here is our new arrival products that you may like.</p>
+                <div class="underline-1"></div>
+            </div>
+
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image img1">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Long Sleeve Tops</div>
+                        <div class="price">
+                            <del class="old-price">$85.50 </del>
+                            <span class="new-price">$70.30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img2">
+                        <div class="heart-icon active"><i class="fa-solid fa-heart" style="color: #ec0426;"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">White Wedding Shoe</div>
+                        <div class="price">
+                            <del class="old-price">$150.20 </del>
+                            <span class="new-price">$120.50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img3">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Long Chain With Locket</div>
+                        <div class="price">
+                            <del class="old-price">$85.50 </del>
+                            <span class="new-price">$70.30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img4">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Winter Jacket</div>
+                        <div class="price">
+                            <del class="old-price">$100.50 </del>
+                            <span class="new-price"> $80.30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-1">
+            <div class="banner-wrap">
+                <div class="text-content">
+                    <div class="bg-text">
+                        <h1>fashion</h1>
+                    </div>
+                    <h2>Stylish casual sweater & sneakers</h2>
+                    <p>Beautiful, Fashionable and Stylish</p>
+                    <a href="#">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-2">
+            <div class="header-2">
+                <h1>Popular Products</h1>
+                <p>Here is our new arrival products that you may like.</p>
+                <div class="underline-2"></div>
+                <div class="menu">
+                    <span class="active">All Products</span>
+                    <span>Men</span>
+                    <span>Women</span>
+                    <span>Kids</span>
+                    <span>Sales</span>
+                    <span>Offers</span>
+                </div>
+            </div>
+
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image img5">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Long Sleeve Tops</div>
+                        <div class="price">
+                            <del class="old-price">$85.50</del>
+                            <span class="new-price"> $70.30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img6">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">White Wedding Shoe</div>
+                        <div class="price">
+                            <del class="old-price">$150.50 </del>
+                            <span class="new-price"> $120.30 </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img7">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Long Chain With Locket</div>
+                        <div class="price">
+                            <del class="old-price"> $180.50 </del>
+                            <span class="new-price"> $150.30 </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img8">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Winter Jacket</div>
+                        <div class="price">
+                            <del class="old-price">$100.50 </del>
+                            <span class="new-price"> $70.30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-3">
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image img9">
+                    <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="overlay">
+                    <div class="icons">
+                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <button class="shop-btn">Shop Now</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Long Sleeve Tops</div>
+                    <div class="price">
+                        <del class="old-price"> $85.50 </del>
+                        <span class="new-price"> $70.30 </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image img10">
+                    <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="overlay">
+                    <div class="icons">
+                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <button class="shop-btn">Shop Now</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">White Wedding Shoe</div>
+                    <div class="price">
+                        <del class="old-price"> $120.50</del>
+                        <span class="new-price"> $100.30</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image img11">
+                    <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="overlay">
+                    <div class="icons">
+                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <button class="shop-btn">Shop Now</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Long Chain With Locket</div>
+                    <div class="price">
+                        <del class="old-price">$150.50 </del>
+                        <span class="new-price"> $130.30</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image img12">
+                    <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                </div>
+                <div class="overlay">
+                    <div class="icons">
+                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-shopping-cart"></i>
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <button class="shop-btn">Shop Now</button>
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Winter Jacket</div>
+                    <div class="price">
+                        <del class="old-price">$100.50 </del>
+                        <span class="new-price"> $70.30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section class="banner">
+        <div class="banner-box left">
+            <img src="lookbook.jpg" alt="Lookbook">
+            <div class="banner-content">
+                <h2>LOOKBOOK 2023</h2>
+                <p>Best fashionable brand in the world</p>
+                <a href="#" class="btn">View Collection</a>
+            </div>
+        </div>
+
+        <div class="banner-box right">
+            <img src="winter.jpg" alt="Sale">
+            <div class="banner-content2">
+                <p class="small">Winter Sale</p>
+                <h2>UP TO 70% OFF</h2>
+                <a href="#" class="btn2">Shop Now</a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-4">
+            <div class="header-3">
+                <h1>Best Seller</h1>
+                <p>Here is our new arrival products that you may like.</p>
+                <div class="underline-3"></div>
+            </div>
+
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image img13">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Long Sleeve Tops</div>
+                        <div class="price">
+                            <del class="old-price">$85.50</del>
+                            <span class="new-price"> $70.30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img14">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">White Wedding Shoe</div>
+                        <div class="price">
+                            <del class="old-price">$150.50 </del>
+                            <span class="new-price"> $120.30 </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img15">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Long Chain With Locket</div>
+                        <div class="price">
+                            <del class="old-price"> $180.50 </del>
+                            <span class="new-price"> $150.30 </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image img16">
+                        <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="icons">
+                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-shopping-cart"></i>
+                            <i class="fa fa-eye"></i>
+                        </div>
+                        <button class="shop-btn">Shop Now</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Winter Jacket</div>
+                        <div class="price">
+                            <del class="old-price">$100.50 </del>
+                            <span class="new-price"> $70.30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="Blog">
+            <div class="Blog-tittle">
+                <h1>Latest News</h1>
+                <p>Here is our top newses for your fashion guide</p>
+                <div class="underline-4"></div>
+            </div>
+            <div class="blog-container">
+                <div class="blog-post">
+                    <div class="post-image fashion-bg">
+                        <span class="category-tag">Fashion</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="content-wrapper">
+                            <div class="text-section">
+                                <div class="post-meta">
+                                    <div class="meta-item">
+                                        <span class="red-dot"></span>
+                                        <span>By Justin Wastal</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="red-dot"></span>
+                                        <span>15 Sep 2023</span>
+                                    </div>
+                                </div>
+                                <h2 class="post-title">New season modern scarf</h2>
+                                <p class="post-excerpt">
+                                    Etiam facisis urna dignissim dui quisque in mauris viverra Nulla placerat suscipit
+                                    integer enim.
+                                </p>
+                            </div>
+                            <div class="action-section">
+                                <a href="#" class="read-more-link">Read More...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-post">
+                    <div class="post-image trending-bg">
+                        <span class="category-tag">Trending</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="content-wrapper">
+                            <div class="text-section">
+                                <div class="post-meta">
+                                    <div class="meta-item">
+                                        <span class="red-dot"></span>
+                                        <span>By Justin Wastal</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="red-dot"></span>
+                                        <span>20 Sep 2023</span>
+                                    </div>
+                                </div>
+                                <h2 class="post-title">Summer Trending 2023</h2>
+                                <p class="post-excerpt">
+                                    Etiam facisis urna dignissim dui quisque in mauris viverra Nulla placerat suscipit
+                                    integer enim.
+                                </p>
+                            </div>
+                            <div class="action-section">
+                                <a href="#" class="read-more-link">Read More...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-post">
+                    <div class="post-image lifestyle-bg">
+                        <span class="category-tag">Lifestyle</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="content-wrapper">
+                            <div class="text-section">
+                                <div class="post-meta">
+                                    <div class="meta-item">
+                                        <span class="red-dot"></span>
+                                        <span>By Justin Wastal</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="red-dot"></span>
+                                        <span>25 Sep 2023</span>
+                                    </div>
+                                </div>
+                                <h2 class="post-title">Top 10 Curley Hairstyle</h2>
+                                <p class="post-excerpt">
+                                    Etiam facilis urna dignissim dui quisque in mauris viverra Nulla placerat suscipit
+                                    integer enim.
+                                </p>
+                            </div>
+                            <div class="action-section">
+                                <a href="#" class="read-more-link">Read More...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="row">
+            <div class="box">
+                <h2 class="logo"><img src="logo_converted.png" alt="logo"></h2>
+                <p>
+                    Mattis inelit neque quis donecyir eleng amet. Amet sed et cursus eu euioid.
+                    Egestas in morbiet tristique ornare vulputate vitae enim.
+                </p>
+                <div class="icon">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-skype"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Women</li>
+                    <li>Men</li>
+                    <li>Kids</li>
+                    <li>Shoes</li>
+                    <li>Jewellery</li>
+                    <li>T-shirts</li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h3>Blog Post</h3>
+                <div class="post">
+                    <img src="Fashion.jpg" alt="Blog 1">
+                    <div>
+                        <p>It is a long established fact that a reader will be distracted.</p>
+                        <span>12 December, 2023</span>
+                    </div>
+                </div>
+                <div class="post">
+                    <img src="Lifestyle.jpg" alt="Blog 2">
+                    <div>
+                        <p>It is a long established fact that a reader will be distracted.</p>
+                        <span>12 December, 2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter and get 10% off your first purchase.</p>
+                <form>
+                    <input type="email" placeholder="Your Email Address..">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
