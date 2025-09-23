@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color:#7aa4d1;
+            ;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin-top: 90px;
+        }
+
+        .image-box img {
+            float: right;
+            height: 100%;
+            max-width: 392px;
+            border-radius: 8px 0px 0px 8px;
+        }
+
+        .image-box {
+            float: left;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+        .form-box {
+
+            width: 50%;
+            height: 100%;
+            display: inline-block;
+            background: #7aa4d1;
+
+            /* Optional overlay effect */
+        }
+
+        .form-content {
+            display: inline-table;
+            vertical-align: middle;
+            padding: 0px;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+            border-radius: 0px 8px 8px 0px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color:black;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+
+
+        .social-btn {
+            display: inline-block;
+            width: 130px;
+            padding: 8px;
+            margin: 5px 25px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .social-btn:hover {
+            background-color: rgb(183, 178, 178);
+        }
+
+        .social-btn img {
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .social-btn span {
+            vertical-align: middle;
+        }
+
+        .google-btn {
+            border-color: gray;
+        }
+
+        .facebook-btn {
+            border-color: gray;
+        }
+
+        .go-to-signup-page {
+            margin-top: 10px;
+
+        }
+
+        .link p a {
+            text-decoration: none;
+        }
+
+        .go-to-signup-page a {
+            text-decoration: none;
+
+
+        }
+        p{ text-align: center;}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Left Image Box -->
+        <div class="image-box">
+            <img src="loginimage.png" alt="man Wearing Denim Jacket">
+        </div>
+
+        <!-- Right Form Box -->
+        <div class="form-box">
+            <div class="form-content">
+                <div class="form-container">
+                    <h2>Log In</h2>
+                    <p>Welcome back! Please enter your details</p>
+                    <form action="#" method="post" target="_blank">
+                        <label for=" Username">Username</label>
+                        <input type="text" id="Username" name="UserName" placeholder="Enter your Username" required>
+
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter password" required>
+                        <div class="link">
+                            <p> <a href="#">Forgot Password?</a></p>
+                        </div>
+                        <button type="submit">Sign In</button>
+                    </form>
+                    <div class="social-login">
+                        <p class="social-text">or continue with</p>
+
+                        <div class="social-buttons">
+                            <div class="social-btn google-btn">
+                                <img src="googleimg.png" alt="Google">
+                                <span>Google</span>
+                            </div>
+
+                            <div class="social-btn facebook-btn">
+                                <img src="facebookimg.png" alt="Facebook">
+                                <span>Facebook</span>
+                            </div>
+                            <div class="go-to-signup-page">
+                                Don't have an account? <a href="signup.html">Signup</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
